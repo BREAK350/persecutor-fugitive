@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<script src="output.js"></script>
+	<canvas id="canvas" width="800" height="600"></canvas>
+	<script>
+		var c = document.getElementById('canvas');
+		var ctx = c.getContext('2d');
+		ctx.translate(50, 50);
+		function drawCurve(points, color) {
+			ctx.lineWidth = 3;
+			ctx.strokeStyle = color;
+			ctx.beginPath();
+			ctx.moveTo(points[0].x, points[0].y);
+			for(var i = 1; i < points.length; i++) {
+				ctx.lineTo(points[i].x, points[i].y);	
+			}
+			ctx.stroke();
+			ctx.lineWidth = 1;
+		}
+
+		var result = getPogony(1, 400, 250, 0.5);
+		drawCurve(result.persecutor, '#FF0000');
+		drawCurve(result.fugitive, '#44FF44');
+	</script>
+</body>
+</html>
